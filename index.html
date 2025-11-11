@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Ujian Online - Kelas D</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="login-page" class="page center">
+    <div class="card login-card">
+      <h1>Ujian Online</h1>
+      <input id="student-name" placeholder="Nama Lengkap" autocomplete="off"/>
+      <input id="student-nim" placeholder="NIM" autocomplete="off"/>
+      <input id="student-class" placeholder="Kelas" autocomplete="off"/>
+      <div class="row">
+        <button id="start-btn">Mulai Ujian</button>
+      </div>
+      <p class="note">Full-screen akan diaktifkan dan fitur keamanan akan diterapkan.</p>
+    </div>
+  </div>
+
+  <div id="exam-page" class="page" style="display:none;">
+    <header class="topbar">
+      <div class="brand">📝 Ujian - Kelas D</div>
+      <div id="timer" class="timer">Waktu: 00:00</div>
+    </header>
+
+    <div class="main">
+      <aside class="sidebar">
+        <div class="panel">
+          <h3>Nomor Soal</h3>
+          <div id="question-numbers" class="q-grid"></div>
+        </div>
+        <div class="panel">
+          <h3>Informasi</h3>
+          <p id="info-student"></p>
+        </div>
+      </aside>
+
+      <section class="content">
+        <div id="questions" class="questions"></div>
+
+        <div class="actions">
+          <button id="submit-btn">Kirim Jawaban</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div id="result-page" class="page center" style="display:none;">
+    <div class="card result-card">
+      <h2>Hasil Ujian</h2>
+      <p id="result-text"></p>
+      <p class="note">Terima kasih. Halaman tidak dapat kembali ke ujian.</p>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
