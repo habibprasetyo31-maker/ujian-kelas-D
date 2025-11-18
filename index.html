@@ -1,59 +1,45 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Ujian Online - Kelas D</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ujian Online</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="login-page" class="page center">
-    <div class="card login-card">
-      <h1>Ujian Online</h1>
-      <input id="student-name" placeholder="Nama Lengkap" autocomplete="off"/>
-      <input id="student-nim" placeholder="NIM" autocomplete="off"/>
-      <input id="student-class" placeholder="Kelas" autocomplete="off"/>
-      <div class="row">
-        <button id="start-btn">Mulai Ujian</button>
-      </div>
-      <p class="note">Full-screen akan diaktifkan dan fitur keamanan akan diterapkan.</p>
+
+  <!-- ================= HALAMAN LOGIN ================= -->
+  <div id="login-page" class="page">
+    <div class="login-box">
+      <h2>Ujian Online</h2>
+      <input type="text" id="student-name" placeholder="Nama Lengkap">
+      <input type="text" id="student-nim" placeholder="NIM">
+      <input type="text" id="student-class" placeholder="Kelas">
+      <button onclick="startExam()">Mulai Ujian</button>
     </div>
   </div>
 
+  <!-- ================= HALAMAN UJIAN ================= -->
   <div id="exam-page" class="page" style="display:none;">
-    <header class="topbar">
-      <div class="brand">📝 Ujian - Kelas D</div>
-      <div id="timer" class="timer">Waktu: 00:00</div>
-    </header>
+    <div class="exam-container">
+      <div class="question-area">
+        <h2>Soal Ujian</h2>
+        <p id="timer" class="timer">Waktu: 5:00</p>
+        <div id="questions"></div>
+        <button onclick="submitExam()">Kirim Jawaban</button>
+      </div>
 
-    <div class="main">
-      <aside class="sidebar">
-        <div class="panel">
-          <h3>Nomor Soal</h3>
-          <div id="question-numbers" class="q-grid"></div>
-        </div>
-        <div class="panel">
-          <h3>Informasi</h3>
-          <p id="info-student"></p>
-        </div>
-      </aside>
-
-      <section class="content">
-        <div id="questions" class="questions"></div>
-
-        <div class="actions">
-          <button id="submit-btn">Kirim Jawaban</button>
-        </div>
-      </section>
+      <div class="sidebar">
+        <h3>Nomor Soal</h3>
+        <div id="question-numbers"></div>
+      </div>
     </div>
   </div>
 
-  <div id="result-page" class="page center" style="display:none;">
-    <div class="card result-card">
-      <h2>Hasil Ujian</h2>
-      <p id="result-text"></p>
-      <p class="note">Terima kasih. Halaman tidak dapat kembali ke ujian.</p>
-    </div>
+  <!-- ================= HALAMAN HASIL ================= -->
+  <div id="result-page" class="page" style="display:none;">
+    <h2>Hasil Ujian</h2>
+    <p id="result-text"></p>
   </div>
 
 <script src="script.js"></script>
