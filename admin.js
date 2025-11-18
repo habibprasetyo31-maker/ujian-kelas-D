@@ -1,25 +1,19 @@
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyxqwYcNIqVAjV_KSRO6QiIXMJ2dYdvLehVPAOmAaWKg5l8KhZinhGdrrv1sZEs5ZbZ/exec";
+const https://script.google.com/macros/s/AKfycbyxqwYcNIqVAjV_KSRO6QiIXMJ2dYdvLehVPAOmAaWKg5l8KhZinhGdrrv1sZEs5ZbZ/exec = "PASTE_URL_GOOGLE_SCRIPT_DI_SINI";
 
-async function loadResults(){
-  try{
-    const res = await fetch(GOOGLE_SCRIPT_URL);
-    const data = await res.json();
-    const tbody = document.getElementById('result-body');
-    tbody.innerHTML = '';
-    if(!data.length) {
-      tbody.innerHTML = '<tr><td colspan="5">Belum ada data.</td></tr>';
-      return;
-    }
+fetch(https://script.google.com/macros/s/AKfycbyxqwYcNIqVAjV_KSRO6QiIXMJ2dYdvLehVPAOmAaWKg5l8KhZinhGdrrv1sZEs5ZbZ/exec)
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.getElementById("result-body");
+
     data.forEach(r => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${new Date(r.timestamp).toLocaleString()}</td>
-                      <td>${r.name}</td>
-                      <td>${r.nim}</td>
-                      <td>${r.class}</td>
-                      <td>${r.score}</td>`;
-      tbody.appendChild(tr);
+      tbody.innerHTML += `
+        <tr>
+          <td>${new Date(r.timestamp).toLocaleString()}</td>
+          <td>${r.name}</td>
+          <td>${r.nim}</td>
+          <td>${r.class}</td>
+          <td>${r.score}</td>
+        </tr>
+      `;
     });
-  }catch(e){ console.error('Gagal ambil data',e); document.getElementById('result-body').innerHTML='<tr><td colspan="5">Error memuat data</td></tr>'; }
-}
-
-window.addEventListener('DOMContentLoaded', loadResults);
+  });
