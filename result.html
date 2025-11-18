@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Hasil Ujian Peserta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="result-section">
+    <h1>📋 Rekap Hasil Ujian</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>NIM</th>
+          <th>Kelas</th>
+          <th>Skor</th>
+          <th>Waktu Submit</th>
+        </tr>
+      </thead>
+      <tbody id="result-body"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const tbody = document.getElementById('result-body');
+    const data = JSON.parse(localStorage.getItem('examResults')) || [];
+    if (data.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="5">Belum ada hasil ujian.</td></tr>';
+    } else {
+      data.forEach(r => {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${r.name}</td><td>${r.nim}</td><td>${r.class}</td><td>${r.score}</td><td>${r.time}</td>`;
+        tbody.appendChild(row);
+      });
+    }
+  </script>
+</body>
+</html>
